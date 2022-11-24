@@ -17,10 +17,10 @@ app.use('/register',userRoutes);
 app.get('/',(req,res)=>{
     res.send("App is running")
 })
-/* const CONNECTION_URL='mongodb+srv://rajwardhan:221201raj@cluster0.tmeta.mongodb.net/?retryWrites=true&w=majority' */
+const CONNECTION_URL='mongodb+srv://rajwardhan:221201raj@cluster0.tmeta.mongodb.net/?retryWrites=true&w=majority'
 const PORT=process.env.PORT || 5000;
 
-mongoose.connect(process.env.CONNECTION_URL)
+mongoose.connect(CONNECTION_URL)
 .then(()=>{app.listen(PORT,()=>{console.log(`Server running on port ${PORT}`)})})
 .catch((err)=>{console.log(err)})
 
