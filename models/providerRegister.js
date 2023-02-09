@@ -10,7 +10,7 @@ const providerSchema=mongoose.Schema({
     total_VM:{type: Number,required:true},
     security_management:{type: String},
     flexibility:{type: String},
-    cpu_capacity:{type: String},
+    cpu_capacity:{type: String, required: true},
     memory_size:{type: String},
     boot_time:{type: String},
     scale_up_down:{type: String},
