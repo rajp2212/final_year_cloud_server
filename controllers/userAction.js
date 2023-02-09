@@ -90,7 +90,7 @@ export const signinprovider=async (req,res)=>{
 }
 export const signupprovider=async (req,res)=>{
     const {email,password,brandName,cost,available_VM,network_bandwidth,security_management,
-    flexibility,response_time}=req.body;
+    flexibility,response_time,cpu_capacity,memory_size,boot_time,scale_up_down,scale_time,auto_scaling,storage}=req.body;
 
     try { 
         const existingUser=await Provider.findOne({email});
@@ -101,7 +101,7 @@ export const signupprovider=async (req,res)=>{
 
         const hashedPassword= await bcrypt.hash(password,12);
 
-        const result= await Provider.create({email,total_VM:available_VM,password:hashedPassword,name:brandName,cost,available_VM,network_bandwidth,security_management,flexibility,response_time});
+         const result= await Provider.create({email,total_VM:available_VM,password:hashedPassword,name:brandName,cost,available_VM,network_bandwidth,security_management,flexibility,response_time,cpu_capacity,memory_size,boot_time,scale_up_down,scale_time,auto_scaling,storage});
 
         const token=jwt.sign({email, id:result._id},"test",{expiresIn:"1h"});
 
