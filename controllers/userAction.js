@@ -119,11 +119,11 @@ export const updateDetails=async(req,res)=>{
     
     const {id}=req.params;
     const {email,brandName,cost,available_VM,network_bandwidth,security_management,
-        flexibility,response_time} = req.body;
+        flexibility,response_time,cpu_capacity,memory_size,boot_time,scale_up,scale_down,scale_up_time,scale_down_time,max_vm_configure,auto_scaling,storage } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedData = { email,total_VM:available_VM,cost,name:brandName,network_bandwidth,security_management,flexibility,response_time, _id: id };
+    const updatedData = { email,total_VM:available_VM,cost,name:brandName,network_bandwidth,security_management,flexibility,response_time, _id: id,cpu_capacity,memory_size,boot_time,scale_up,scale_down,scale_up_time,scale_down_time,max_vm_configure,auto_scaling,storage };
 
     await Provider.findByIdAndUpdate(id, updatedData, { new: true });
 
